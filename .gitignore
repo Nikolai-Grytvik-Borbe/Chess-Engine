@@ -1,12 +1,1 @@
-*.py[cod]
-
-*.o
-*.out
-
-.DS_Store
-
-.vscode/
-
-.venv
-
-
+venv/

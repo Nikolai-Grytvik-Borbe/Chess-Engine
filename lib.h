@@ -1,4 +1,9 @@
+#ifndef LIB_H 
+#define LIB_H
+
+#include <stdio.h>
 #include <stdint.h>
+#include "graphic.h"
 
 typedef uint64_t u64;
 
@@ -33,3 +38,12 @@ typedef enum {
     BLACK_QUEEN,
     BLACK_KING
 } PieceType;
+
+void printChessboard(chessBoard_t board);
+void initChessboard(chessBoard_t *board);
+void movePiece(u64* piece, u64 oldPos, u64 newPos);
+void printPiece(PieceType piece);
+
+PieceType checkSquare(chessBoard_t *board, u64 square);
+
+#endif

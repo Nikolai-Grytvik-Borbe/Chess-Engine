@@ -3,11 +3,10 @@
 int main()
 {
     chessBoard_t board = {0};
-
     initChessboard(&board);
-    printChessboard(board);
-    movePiece(&board.whiteKing, 13, 22);
-    printChessboard(board);
+
+    getPossibleMoves(&board, 64);
+    getPossibleMoves(&board, -1);
 
     return 0;
 }

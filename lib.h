@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <stdint.h>
-#include "graphic.h"
 
 typedef uint64_t u64;
 
@@ -43,7 +42,7 @@ void printChessboard(chessBoard_t board);
 void initChessboard(chessBoard_t *board);
 void movePiece(u64* piece, u64 oldPos, u64 newPos);
 void printPiece(PieceType piece);
-
-PieceType checkSquare(chessBoard_t *board, u64 square);
+u64 getPossibleMoves(const chessBoard_t *board, u64 square);
+PieceType checkSquare(const chessBoard_t *board, u64 square);
 
 #endif

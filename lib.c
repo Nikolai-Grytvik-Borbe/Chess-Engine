@@ -109,6 +109,27 @@ void initChessboard(chessBoard_t *board)
     board->blackKing |= (1ULL << 60);
 }
 
+/*
+ * Get possible moves for the piece on the square
+ * 
+ * Returns:
+ *   - A u64 where each bit, if 1, is a possible move.
+ */
+u64 getPossibleMoves(const chessBoard_t *board, u64 square)
+{
+    // check if outside bounds
+    // without this (1ULL << 64 (or greater)) with push the bit back around
+    if (square >= 64 || square < 0) {
+        printf("u64 square is outside the range of possible squares.\n");
+        return NONE;
+    }
+    PieceType piece = checkSquare(board, square);
+    printPiece(piece);
+
+    return 11;
+}
+
+
 // unused
 void printChessboard(chessBoard_t board)
 {
@@ -127,14 +148,12 @@ void printChessboard(chessBoard_t board)
     state |= board.blackKing;
     state |= board.whitePawns;
 
-    printPadding();
     for (int i = 63; i >= 0; --i) {
         printf("%llu", (state >> i) & 1);
         if (i % 8 == 0) {
             printf("\n");
         }
     }
-    printPadding();
 }
 
 

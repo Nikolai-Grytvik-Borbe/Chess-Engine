@@ -48,8 +48,7 @@ class Board:
 
 	def get_square_from_pos(self, pos):
 		for square in self.squares:
-			if (square.x, square.y) == (pos[0], pos[1]):
-				return square
+			if (square.x, square.y) == (pos[0], pos[1]): return square
 
 
 	def get_piece_from_pos(self, pos):

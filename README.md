@@ -88,5 +88,7 @@ Run to project with:
 
 ## Roadmap
 - [ ] Setup the C engine with python.
-- [ ] Create a demo for the project and add to README.md
-- [ ] Create a "Features" in the README.md
+- [ ] Write documentations.
+- [ ] Create a demo for the project and add to README.md.
+- [ ] Create a "Features" in the README.md.
+- [ ] Write tests.

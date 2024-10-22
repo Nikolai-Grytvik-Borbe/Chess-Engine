@@ -20,22 +20,26 @@ Ensure that you have installed **Python 3** and **GCC** before attempting to ins
 
 ##### macOS
 
-    $ git clone https://github.com/Nikolai-Grytvik-Borbe/Chess-Engine.git
-    $ cd Chess-Engine
-    $ python3 -m venv venv
-    $ source venv/bin/activate
-    $ pip install -r requirements.txt
-    $ python main.py
+```
+git clone https://github.com/Nikolai-Grytvik-Borbe/Chess-Engine.git
+cd Chess-Engine
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python main.py
+```
 
 
 ##### Windows
 
-    $ git clone https://github.com/Nikolai-Grytvik-Borbe/Chess-Engine.git
-    $ cd Chess-Engine
-    $ python -m venv venv
-    $ venv\Scripts\activate
-    $ pip install -r requirements.txt
-    $ python main.py
+```
+git clone https://github.com/Nikolai-Grytvik-Borbe/Chess-Engine.git
+cd Chess-Engine
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python main.py
+```
 
 
 ### Clone the project

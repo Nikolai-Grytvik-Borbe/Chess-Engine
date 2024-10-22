@@ -9,7 +9,7 @@ A highly optimized chess engine written in C, primarily using bit manipulation f
 - Python 3.4+
 - GCC 10.2+
 
-See [requirements.txt](https://github.com/Nikolai-Grytvik-Borbe/Chess-Engine/blob/main/requirements.txt) for more python libraries.
+See [requirements.txt](https://github.com/Nikolai-Grytvik-Borbe/Chess-Engine/blob/main/requirements.txt) for more info about python packages used.
 
 ## Installation
 ### Preface
@@ -42,7 +42,7 @@ Ensure that you have installed **Python 3** and **GCC** before attempting to ins
 
 Make sure you have `git` installed on your system.
 
-To clone using HTTPS:
+To clone the project with HTTPS, run:
 
     $ git clone https://github.com/Nikolai-Grytvik-Borbe/Chess-Engine.git
     $ cd Chess-Engine

@@ -1,13 +1,26 @@
 #include "lib.h"
 
-// updates bit representing position of piece
-void movePiece(u64* piece, u64 oldPos, u64 newPos)
+/*
+ * Moves a given piece. 
+ *
+ * Parameters:
+ *   *piece - pointer to current games piece. (e.g. &board.whiteKing)
+ *   oldPos - integer value for square. (0 -> bottom left, 63 -> top right)
+ *   newPos - integer value for square.
+ */
+void movePiece(u64 *piece, u64 oldPos, u64 newPos)
 {
     *piece &= ~(1ULL << oldPos);
     *piece |= (1ULL << newPos);
 }
 
-void printPiece(PieceType piece)
+/* 
+ * Print to console the name of the piece.
+ * 
+ * Parameters:
+ *   piece - PieceType enum piece
+ */
+void printPiece(const PieceType piece)
 {
     if (piece != NONE) {
         switch (piece) {
@@ -30,11 +43,22 @@ void printPiece(PieceType piece)
     }
 }
 
-// checks what piece (if any) is on a square
-// returns: 0, if there isn't any piece
-PieceType checkSquare(chessBoard_t *board, u64 square)
+/*
+ * Check what piece (if any) is on a square.
+ *
+ * Parameters:
+ *   *board - pointer to the current game.
+ *   square - integer value for square. (0 -> bottom left, 63 -> top right)
+ *
+ * Returns:
+ *   The type of piece (enum PieceType) on square, or NONE if no piece is on the square.
+ */
+PieceType checkSquare(const chessBoard_t *board, u64 square)
 {
-    u64 bit_square = (1ULL << square);
+    // create bitmask with the desired square. e.g. (...0 00100...)
+    u64 bit_square = (1ULL << square);      
+
+    // use bitwise AND ("&") operator to find if any piece match posision
     if (board->whitePawns & bit_square) {
         return WHITE_PAWN; 
     } else if (board->whiteRooks & bit_square) {
@@ -63,6 +87,29 @@ PieceType checkSquare(chessBoard_t *board, u64 square)
     return NONE;
 }
 
+/*
+ * Creates bitmasks corresponding to starting posisions for each piece.
+ *
+ * Parameters:
+ *   *board - pointer to the current game
+ */
+void initChessboard(chessBoard_t *board)
+{
+    board->whitePawns |= (0xFFULL << 8);
+    board->blackPawns |= (0xFFULL << 48);
+    board->whiteRooks |= (1ULL << 0) | (1ULL << 7);
+    board->blackRooks |= (1ULL << 56) | (1ULL << 63);
+    board->whiteKnights |= (1ULL << 1) | (1ULL << 6);
+    board->blackKnights |= (1ULL << 57) | (1ULL << 62);
+    board->whiteBishops |= (1ULL << 2) | (1ULL << 5);
+    board->blackBishops |= (1ULL << 58) | (1ULL << 61);
+    board->whiteQueens |= (1ULL << 3);
+    board->blackQueens |= (1ULL << 59);
+    board->whiteKing |= (1ULL << 4);
+    board->blackKing |= (1ULL << 60);
+}
+
+// unused
 void printChessboard(chessBoard_t board)
 {
     u64 state = 0;
@@ -90,18 +137,4 @@ void printChessboard(chessBoard_t board)
     printPadding();
 }
 
-void initChessboard(chessBoard_t* board)
-{
-    board->whitePawns |= (0xFFULL << 8);
-    board->blackPawns |= (0xFFULL << 48);
-    board->whiteRooks |= (1ULL << 0) | (1ULL << 7);
-    board->blackRooks |= (1ULL << 56) | (1ULL << 63);
-    board->whiteKnights |= (1ULL << 1) | (1ULL << 6);
-    board->blackKnights |= (1ULL << 57) | (1ULL << 62);
-    board->whiteBishops |= (1ULL << 2) | (1ULL << 5);
-    board->blackBishops |= (1ULL << 58) | (1ULL << 61);
-    board->whiteQueens |= (1ULL << 3);
-    board->blackQueens |= (1ULL << 59);
-    board->whiteKing |= (1ULL << 4);
-    board->blackKing |= (1ULL << 60);
-}
+
